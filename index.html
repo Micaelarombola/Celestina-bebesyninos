@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celestina bebés y niños</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======================
+       PORTADA
+  ======================= -->
+  <section id="cover" class="cover">
+    <div class="cover-bg" aria-hidden="true">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+
+      <div class="sparkles" aria-hidden="true"></div>
+      <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+    </div>
+
+    <div class="cover-card">
+      <img class="cover-logo" src="assets/logo.jfif" alt="Celestina bebés y niños">
+      <button id="enterBtn" class="btn-primary" type="button">Ingresar a la Tienda</button>
+    </div>
+  </section>
+
+  <!-- ======================
+       TIENDA
+  ======================= -->
+  <main id="store" class="store hidden">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        <div>
+          <h1>Celestina</h1>
+          <p>bebés y niños</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="mode-toggle" aria-label="Modo de compra">
+          <button id="retailBtn" class="mode-btn active" type="button">Minorista</button>
+          <button id="wholesaleBtn" class="mode-btn" type="button">Mayorista</button>
+        </div>
+
+        <button id="cartBtn" class="icon-btn" type="button">
+          🛒 <span id="cartCount" class="badge">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO QUIÉN SOY -->
+    <section class="hero-editorial">
+      <div class="store-bg-anim" aria-hidden="true">
+        <div class="sblob sb1"></div>
+        <div class="sblob sb2"></div>
+        <div class="sblob sb3"></div>
+        <div class="snoise"></div>
+        <div class="sspark"></div>
+      </div>
+
+      <div class="hero-editorial-inner">
+        <div class="hero-photo">
+          <img src="assets/quien-soy.jfif" alt="Celestina">
+        </div>
+
+        <div class="hero-text">
+          <span class="badge-soft">HECHO A PEDIDO</span>
+          <h2>Hola, soy Celestina 💗</h2>
+          <p>
+            Diseño y confecciono prendas para bebés y niños con dedicación y atención personalizada.
+            Todo se realiza por pedido (sin stock).
+          </p>
+
+          <div class="hero-info-grid">
+            <div class="info-box">
+              <strong>🧵 Producción</strong>
+              <span>Por pedido</span>
+            </div>
+            <div class="info-box">
+              <strong>💳 Seña</strong>
+              <span>50% para iniciar</span>
+            </div>
+            <div class="info-box">
+              <strong>⏳ Entrega</strong>
+              <span>Aprox 15 días</span>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <button id="goCatalogBtn" class="btn-primary btn-sm" type="button">Ver catálogo</button>
+            <a class="btn-outline btn-sm" href="https://www.instagram.com/celestina.bebesyninos/" target="_blank"
+              rel="noreferrer">
+              Ver Instagram
+            </a>
+          </div>
+
+          <div class="hero-mini">
+            <div class="mini-card">
+              <h4>Minorista</h4>
+              <p>Compras individuales.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Mayorista</h4>
+              <p>Precios por cantidad (mínimos).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wave-sep" aria-hidden="true"></div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="section tight">
+      <div class="section-head center">
+        <h3>Cómo funciona</h3>
+        <p>Elegís → señás → entregamos</p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4>Elegís modelos</h4>
+          <p>Seleccionás productos, cantidades y nos dejás notas.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4>Seña 50%</h4>
+          <p>Confirmamos el pedido y abonás la seña para iniciar.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4>Entrega aprox 15 días</h4>
+          <p>Coordinamos entrega. El saldo se paga al recibir/retirar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTROLES -->
+    <section class="section tight" id="controlsTop">
+      <div class="controls">
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Buscar (body, camisa, pollera, vestido...)" />
+        </div>
+        <div class="filters">
+          <button class="chip active" data-category="all" type="button">Todo</button>
+          <button class="chip" data-category="Ajuar" type="button">Ajuar</button>
+          <button class="chip" data-category="Blusas" type="button">Blusas</button>
+          <button class="chip" data-category="Body" type="button">Body</button>
+          <button class="chip" data-category="Camisa" type="button">Camisa</button>
+          <button class="chip" data-category="Chaleco" type="button">Chaleco</button>
+          <button class="chip" data-category="Conjunto" type="button">Conjunto</button>
+          <button class="chip" data-category="Jumper" type="button">Jumper</button>
+          <button class="chip" data-category="Mono" type="button">Mono</button>
+          <button class="chip" data-category="Pantalones" type="button">Pantalones</button>
+          <button class="chip" data-category="Pollera" type="button">Pollera</button>
+          <button class="chip" data-category="Vestido" type="button">Vestido</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTACADOS -->
+    <section class="section">
+      <div class="section-head">
+        <h3>Destacados</h3>
+        <p>Lo más elegido para armar pedidos</p>
+      </div>
+      <div class="h-scroll" id="featuredRow"></div>
+    </section>
+
+    <!-- CATÁLOGO POR SECCIONES -->
+    <section class="section" id="catalogSection">
+      <div class="section-head">
+        <h3>Catálogo</h3>
+        <p>Armá tu pedido y coordinamos por WhatsApp</p>
+      </div>
+
+      <div id="catalogRoot" class="catalog-root"></div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="section">
+      <div class="section-head">
+        <h3>¿Por qué Celestina?</h3>
+        <p>Una experiencia de compra cuidada 💗</p>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit-card">
+          <h4>💬 Asesoramiento real</h4>
+          <p>Te ayudo con talles, modelos y combinaciones.</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🧵 Hecho a pedido</h4>
+          <p>Se confecciona especialmente para vos (sin stock).</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🧾 Pedido detallado</h4>
+          <p>Te queda todo claro en el mensaje de WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="section-head">
+        <h3>Preguntas frecuentes</h3>
+        <p>Para ahorrar ida y vuelta 😅</p>
+      </div>
+      <div class="faq" id="faq"></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="cta">
+        <div>
+          <h3>¿Lista para armar tu pedido? 💗</h3>
+          <p>Abrí el carrito, completá tus datos y te armamos el mensaje por WhatsApp.</p>
+        </div>
+        <button id="openCartCta" class="btn-primary" type="button">Abrir carrito</button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer-premium">
+
+  <div class="footer-inner">
+
+    <!-- LOGO -->
+    <div class="footer-logo-wrap">
+      <img src="assets/logo.jfif" alt="Celestina bebés y niños" class="footer-logo">
+    </div>
+
+    <!-- MARCA -->
+    <div class="footer-col footer-brand">
+      <h4>Celestina bebés y niños</h4>
+      <p>
+        Prendas confeccionadas a pedido para bebés y niños,
+        con atención personalizada y una experiencia de compra
+        simple y cuidada.
+      </p>
+      <small>© <span id="year"></span> Celestina · Todos los derechos reservados.</small>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="footer-col">
+      <strong>Contacto</strong>
+      <a href="https://www.instagram.com/celestina.bebesyninos/" target="_blank">Instagram</a>
+      <a href="#" id="footerWhatsapp">WhatsApp</a>
+    </div>
+
+    <!-- COMPRA -->
+    <div class="footer-col">
+      <strong>Compra</strong>
+      <span>Producción a pedido</span>
+      <span>Seña 50% para iniciar</span>
+      <span>Entrega aprox 15 días</span>
+    </div>
+
+    <!-- MODALIDAD -->
+    <div class="footer-col">
+      <strong>Modalidad</strong>
+      <span>Minorista y mayorista</span>
+      <span>Sin stock</span>
+      <span>Coordinación por WhatsApp</span>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    Hecho con amor para una experiencia de compra simple y cuidada 💗
+  </div>
+
+</footer>
+
+  </main>
+
+  <!-- BACKDROP -->
+  <div id="backdrop" class="backdrop hidden"></div>
+
+  <!-- CARRITO -->
+  <aside id="cartDrawer" class="drawer hidden" aria-label="Carrito">
+    <div class="drawer-header">
+      <div>
+        <h3>Tu Pedido</h3>
+        <small id="modeHint" class="muted">Modo: Minorista</small>
+      </div>
+      <button id="closeCartBtn" class="icon-btn" type="button">✕</button>
+    </div>
+
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="drawer-footer">
+      <div class="row">
+        <span>Total</span>
+        <strong>$ <span id="cartTotal">0</span></strong>
+      </div>
+
+      <button id="clearCartBtn" class="btn-ghost" type="button">Vaciar carrito</button>
+
+      <div class="divider"></div>
+
+      <form id="checkoutForm" class="checkout">
+        <div class="field">
+          <label>Nombre</label>
+          <input id="cName" required placeholder="Tu nombre">
+        </div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input id="cPhone" required placeholder="Ej: 11 2345 6789">
+        </div>
+        <div class="field">
+          <label>Barrio / Ciudad</label>
+          <input id="cZone" placeholder="Ej: Caseros / CABA / Zona Oeste">
+        </div>
+        <div class="field">
+          <label>Notas</label>
+          <textarea id="cNotes" rows="3" placeholder="Talles, colores, aclaraciones..."></textarea>
+        </div>
+
+        <button class="btn-whatsapp" type="submit">Solicitar pedido por WhatsApp</button>
+        <p class="mini">Mensaje incluye: por pedido + seña 50% + entrega aprox 15 días.</p>
+      </form>
+    </div>
+  </aside>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox hidden" aria-label="Imagen ampliada">
+    <button id="closeLightbox" class="lightbox-close" type="button">✕</button>
+
+    <div class="lightbox-inner">
+      <button id="lightboxPrev" class="lightbox-nav lightbox-prev" type="button">‹</button>
+      <img id="lightboxImg" alt="Imagen ampliada">
+      <button id="lightboxNext" class="lightbox-nav lightbox-next" type="button">›</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
