@@ -1,866 +1,1005 @@
-const WHATSAPP_PHONE = "5491162283678"; // ✅ CAMBIAR
-const STORAGE_KEY = "celestina_cart_sections_v1";
+const WHATSAPP_NUMBER = "5491162283678"; // CAMBIAR POR TU NUMERO REAL
 
-// DOM
-const enterBtn = document.getElementById("enterBtn");
-const cover = document.getElementById("cover");
-const store = document.getElementById("store");
-const bubbles = document.getElementById("bubbles");
-
-const retailBtn = document.getElementById("retailBtn");
-const wholesaleBtn = document.getElementById("wholesaleBtn");
-const modeHint = document.getElementById("modeHint");
-
-const catalogRoot = document.getElementById("catalogRoot");
-const featuredRow = document.getElementById("featuredRow");
-
-const searchInput = document.getElementById("searchInput");
-const chips = Array.from(document.querySelectorAll(".chip"));
-
-const goCatalogBtn = document.getElementById("goCatalogBtn");
-const catalogSection = document.getElementById("catalogSection");
-
-const cartBtn = document.getElementById("cartBtn");
-const cartDrawer = document.getElementById("cartDrawer");
-const closeCartBtn = document.getElementById("closeCartBtn");
-const backdrop = document.getElementById("backdrop");
-const cartItems = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-const clearCartBtn = document.getElementById("clearCartBtn");
-
-const checkoutForm = document.getElementById("checkoutForm");
-const cName = document.getElementById("cName");
-const cPhone = document.getElementById("cPhone");
-const cZone = document.getElementById("cZone");
-const cNotes = document.getElementById("cNotes");
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const closeLightbox = document.getElementById("closeLightbox");
-const lightboxPrev = document.getElementById("lightboxPrev");
-const lightboxNext = document.getElementById("lightboxNext");
-
-const faq = document.getElementById("faq");
-const openCartCta = document.getElementById("openCartCta");
-const footerWhatsapp = document.getElementById("footerWhatsapp");
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// DATA (demo - reemplazás por productos reales + fotos reales)
 const PRODUCTS = [
-  // ===== AJUAR =====
+  // ======================
+  // ACCESORIOS
+  // ======================
   {
-    id: "aj1",
-    name: "Ajuar 1",
-    category: "Ajuar",
-    priceRetail: 25000,
-    priceWholesale: 22000,
-    wholesaleMinQty: 2,
-    images: [
-      "assets/ajuar1.png",
-      "assets/ajuar2.png",
-      "assets/ajuar3.png",
-      "assets/ajuar4.png"
-    ],
-    note: "A pedido · Consultar talle y colores",
+    id: "acc1",
+    name: "Set babero babita y portachupete",
+    category: "Accesorios",
+    segment: "Beba",
+    priceRetail: 9000,
+    sizes: ["Único"],
+    images: ["assets/acce1.csv", "assets/acce2.csv", "assets/acce3.csv", "assets/acce4.csv","assets/acce8.csv" ],
+    note: "Confeccionado con toalla de algodon. Varios diseños",
+    featured: true
+  },
+  {
+    id: "acc2",
+    name: "Set de amamantar",
+    category: "Accesorios",
+    segment: "Beba",
+    priceRetail: 7000,
+    sizes: ["Único"],
+    images: ["assets/acce5.csv", "assets/acce6.csv" , "assets/acce7.csv" ],
+    note: "Toallita de hombro y 2 pares de protectores mamarios.",
     featured: true
   },
 
-  // ===== BLUSAS =====
+  // ======================
+  // AJUAR
+  // ======================
+  {
+    id: "aju1",
+    name: "Ajuar con body",
+    category: "Ajuar",
+    segment: "Beba",
+    priceRetail: 9000,
+    sizes: ["RN", "0-3M", "3-6M"],
+    images: ["assets/kit1.csv", "assets/kit2.csv", "assets/kit3.csv" , "assets/kit4.csv"  ],
+    note: "Ajuar confeccionado a pedido",
+    featured: true
+  },
+  {
+    id: "aju2",
+    name: "Ajuar con camperita",
+    category: "Ajuar",
+    segment: "Beba",
+    priceRetail: 13000,
+    sizes: ["RN", "0-3M", "3-6M"],
+    images: ["assets/ajuar1.png", "assets/ajuar2.png" , "assets/ajuar3.png" , "assets/ajuar4.png"],
+    note: "Ajuar con camperita incluida",
+    featured: true
+  },
+
+  // ======================
+  // BLUSAS
+  // ======================
   {
     id: "bl1",
-    name: "Blusa Carmela",
+    name: "Blusa Celestina beba",
     category: "Blusas",
-    priceRetail: 14500,
-    priceWholesale: 12200,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/blusa-carmela.csv",
-      "assets/blusa-carmela.jfif",
-      "assets/Blusa-Carmela1.jfif",
-      "assets/Blusa-Carmela2.csv"
-
-    ],
-    note: "A pedido · Consultar talles",
-    featured: true
-  },
-  {
-    id: "bl2",
-    name: "Blusa Celestina",
-    category: "Blusas",
-    priceRetail: 18500,
-    priceWholesale: 15500,
-    wholesaleMinQty: 6,
-    images: [
-      "assets/blusa-celestina.csv",
-    ],
-    note: "A pedido · Consultar talles y colores",
+    segment: "Beba",
+    priceRetail: 10000,
+    sizes: ["Talle 2 al 5"],
+    images: ["assets/blusa-celestina.csv"],
+    note: "Blusa bebé- Solo blanca",
     featured: false
   },
-
-  // ===== BODY =====
+ 
   {
-    id: "bo1",
-    name: "Body Ciro",
-    category: "Body",
-    priceRetail: 9800,
-    priceWholesale: 8200,
-    wholesaleMinQty: 4,
-    images: [
-      "assets/Body-ciro.png"
-    ],
-    note: "A pedido · Ideal para bebé",
+    id: "bl3",
+    name: "Blusa Celestina niña",
+    category: "Blusas",
+    segment: "Niña",
+    priceRetail: 12500,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/blusa-celestina.csv"],
+    note: "Confeccionada en tusor, Cuello y mangas de broderi.",
     featured: true
   },
-
-  // ===== CAMISA =====
+  {
+    id: "bl4",
+    name: "Blusa Carmela niña",
+    category: "Blusas",
+    segment: "Niña",
+    priceRetail: 9500,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/blusa-carmela.csv", "assets/Blusa-carmela.jfif", "assets/blusa-carmela2.csv"],
+    note: "Realizado en tusor. Varios colores",
+    featured: false
+  },
+ {
+    id: "bl5",
+    name: "Blusa Mini Carmela ",
+    category: "Blusas",
+    segment: "Bebe",
+    priceRetail: 8000,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/blusa-carmela.csv", "assets/Blusa-carmela.jfif", "assets/blusa-carmela2.csv"],
+    note: "Realizado en tusor. Varios colores",
+    featured: false
+  },
+  // ======================
+  // CAMISAS
+  // ======================
   {
     id: "ca1",
-    name: "Camisa Amelia",
+    name: "Camisa Angelita",
     category: "Camisa",
-    priceRetail: 16800,
-    priceWholesale: 14200,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/Camisa-Amelia.jfif",
-      "assets/Camisa-Amelia1.jfif",
-    ],
-    note: "A pedido · Modelo clásico",
-    featured: true
+    segment: "Niña",
+    priceRetail: 11500,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/camisa-angelita.csv", "assets/camisa-angelita2.csvg"],
+    note: "Camisa Angelita bebé",
+    featured: false
   },
   {
     id: "ca2",
-    name: "Camisa Catalina",
+    name: "Camisa Catalina beba",
     category: "Camisa",
-    priceRetail: 16800,
-    priceWholesale: 14200,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/Camisa-catalina.jfif"
-    ],
-    note: "A pedido · Consultar medidas",
+    segment: "Beba",
+    priceRetail: 9000,
+    sizes: ["2", "3", "4", "5"],
+    images: ["assets/Camisa-catalina.jfif"],
+    note: "Realizada en tusor- Varios colores",
     featured: false
   },
-{
-  id:"cam2",
-  name:"Camisa Angelita",
-  category:"Camisa",
-  priceRetail:21000,
-  priceWholesale:17500,
-  wholesaleMinQty:6,
-  images:[
-    "assets/camisa-angelita.csv",
-    "assets/camisa-angelita2.csv",
+  {
+    id: "ca3",
+    name: "Camisa Amelia mini",
+    category: "Camisa",
+    segment: "Beba",
+    priceRetail: 10500,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/Camisa-Amelia.jfif", "assets/Camisa-Amelia1.jfif"],
+    note: "Camisa de jean para beba",
+    featured: false
+  },
+  {
+    id: "ca4",
+    name: "Camisa Angelita niña",
+    category: "Camisa",
+    segment: "Niña",
+    priceRetail: 11500,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/camisa-angelita.csv", "assets/camisa-angelita2.csv"],
+    note: "Realizada en tusor con puntilla de algodon- Varios colores",
+    featured: false
+  },
+  {
+    id: "ca5",
+    name: "Camisa Catalina niña",
+    category: "Camisa",
+    segment: "Niña",
+    priceRetail: 10500,
+    sizes: ["Talle del 6 al 16"],
+    images: ["assets/Camisa-catalina.jfif"],
+    note: "Realizada en tusor- Varios colores",
+    featured: false
+  },
+  {
+    id: "ca6",
+    name: "Camisa Amelia",
+    category: "Camisa",
+    segment: "Niña",
+    priceRetail: 13000,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/Camisa-Amelia.jfif", "assets/Camisa-Amelia1.jfif"],
+    note: "Camisa de jean- Talle 16 opcional",
+    featured: false
+  },
 
-  ],
-  note:"A pedido · Consultar talles y colores",
-  featured:false
-},
-
-{
-  id:"cam4",
-  name:"Camisa Dante",
-  category:"Camisa",
-  priceRetail:22000,
-  priceWholesale:18500,
-  wholesaleMinQty:6,
-  images:[
-    "assets/camisa-dante.csv",
-    
-  ],
-  note:"A pedido · Consultar talles y colores",
-  featured:false
-},
-  // ===== CHALECO =====
+  // ======================
+  // CHALECOS
+  // ======================
   {
     id: "ch1",
-    name: "Chaleco Sofía",
+    name: "Chaleco Sofía beba",
     category: "Chaleco",
-    priceRetail: 15400,
-    priceWholesale: 12900,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/chaleco-sofia.csv"
-    ],
-    note: "A pedido · Terminación artesanal",
+    segment: "Beba",
+    priceRetail: 7500,
+    sizes: ["Talle del 1 al 5"],
+    images: ["assets/chaleco-sofia.csv"],
+    note: "Realizado en corderito, forrado",
+    featured: false
+  },
+  {
+    id: "ch2",
+    name: "Chaleco Sofía nenas",
+    category: "Chaleco",
+    segment: "Niña",
+    priceRetail: 9000,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/chaleco-sofia.csv"],
+    note: "Talle 16 opcional.",
     featured: false
   },
 
-  // ===== CONJUNTO =====
-  {
+  // ======================
+  // CONJUNTOS
+  // ======================
+ {
     id: "co1",
-    name: "Conjunto Victoria",
+    name: "Conjunto Victoria de beba",
     category: "Conjunto",
-    priceRetail: 22000,
-    priceWholesale: 18800,
-    wholesaleMinQty: 2,
-    images: [
-      "assets/conjunto-victoria.csv"
-    ],
-    note: "A pedido · Conjunto completo",
+    segment: "Beba",
+    priceRetail: 16000,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/conjunto-victoria.csv"],
+    note: "Compuesto por pollera con elastico en la cintura, chaquetita con lazo y boina.",
+    featured: true
+  },
+  {
+    id: "co2",
+    name: "Conjunto Victoria de nena",
+    category: "Conjunto",
+    segment: "Niña",
+    priceRetail: 21000,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/conjunto-victoria.csv"],
+    note: "Compuesto por pollera con elastico en la cintura, chaquetita con lazo y boina.",
     featured: true
   },
 
-  // ===== JUMPER =====
+  // ======================
+  // JUMPERS
+  // ======================
   {
     id: "ju1",
-    name: "Jumper Grace",
+    name: "Jumper Noelia de beba",
     category: "Jumper",
-    priceRetail: 19500,
-    priceWholesale: 16800,
-    wholesaleMinQty: 2,
-    images: [
-      "assets/jumper-grace.csv"
-    ],
-    note: "A pedido · Súper delicado",
+    segment: "Beba",
+    priceRetail: 9000,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/jumper-noelia-beba-1.jpg", "assets/jumper-noelia-beba-2.jpg"],
+    note: "Realizado en paño",
     featured: false
   },
   {
     id: "ju2",
-    name: "Jumper Noelia",
+    name: "Jumper Grace",
     category: "Jumper",
-    priceRetail: 19500,
-    priceWholesale: 16800,
-    wholesaleMinQty: 2,
-    images: [
-      "assets/jumper-noelia.csv"
-    ],
-    note: "A pedido · Consultar colores",
-    featured: false
-  },
-
-  // ===== MONO =====
-  {
-    id: "mo1",
-    name: "Mono Kyra",
-    category: "Mono",
-    priceRetail: 18500,
-    priceWholesale: 15800,
-    wholesaleMinQty: 2,
-    images: [
-      "assets/Mono-kyra.csv"
-    ],
-    note: "A pedido · Diseño cómodo",
-    featured: false
-  },
-
-  // ===== PANTALONES =====
-  {
-    id: "pa1",
-    name: "Pantalón Abril",
-    category: "Pantalones",
-    priceRetail: 14900,
-    priceWholesale: 12600,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/Pantalon-abril.jfif",
-      "assets/Pantalon-abril1.jfif",
-      "assets/Pantalon-abril2.jfif",
-      "assets/Pantalon-abril3.jfif"
-    ],
-    note: "A pedido · Consultar talle",
+    segment: "Niña",
+    priceRetail: 8000,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/jumper-grace.csv"],
+    note: "JRealizado en tusor con puntilla de algodon- Varios colores",
     featured: true
   },
   {
-    id: "pa2",
-    name: "Pantalón Milo",
+    id: "ju3",
+    name: "Jumper Noelia de niña",
+    category: "Jumper",
+    segment: "Niña",
+    priceRetail: 14000,
+    sizes: ["6", "8", "10", "12" , "14"],
+    images: ["assets/jumper-noelia.csv"],
+    note: "Realizado en paño",
+    featured: false
+  },
+
+  // ======================
+  // MONOS
+  // ======================
+  {
+    id: "mo1",
+    name: "Mono Kyra niña",
+    category: "Mono",
+    segment: "Niña",
+    priceRetail: 13500,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/mono-kyra.csv"],
+    note: "Confeccionado en tusor con broches en el hombro. Varios colores",
+    featured: true
+  },
+  {
+    id: "mo2",
+    name: "Mono Kyra niña",
+    category: "Mono",
+    segment: "Niña",
+    priceRetail: 17000,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/mono-kyra.csv"],
+    note: "Confeccionado en tusor con broches en el hombro. Varios colores",
+    featured: true
+  },
+
+  // ======================
+  // PANTALONES
+  // ======================
+  {
+    id: "pa1",
+    name: "Pantalón Trini beba",
     category: "Pantalones",
-    priceRetail: 14900,
-    priceWholesale: 12600,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/pantalon-milo.csv",
-      "assets/pantalon-milo2.csv"
-    ],
-    note: "A pedido · Varios colores",
+    segment: "Beba",
+    priceRetail: 9500,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/pantalon-trini.csv"],
+    note: "Confeccionado en corderoy, detalle de bordado en los bolsillos, cintura elastizada- Varios colores",
+    featured: false
+  },
+  {
+    id: "pa2",
+    name: "Pantalón Mini Abril",
+    category: "Pantalones",
+    segment: "Beba",
+    priceRetail: 8500,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/pantalon-abril.jfif", "assets/pantalon-abril1.jfif" , "assets/pantalon-abri2.jfif" , "assets/pantalon-abril3.jfif"],
+    note: "Realizado en tusor- Varios colores",
     featured: false
   },
   {
     id: "pa3",
-    name: "Pantalón Trini",
+    name: "Pantalón Umma mini",
     category: "Pantalones",
-    priceRetail: 14900,
-    priceWholesale: 12600,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/pantalon-trini.csv"
-    ],
-    note: "A pedido · Corte cómodo",
+    segment: "Beba",
+    priceRetail: 9500,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/Pantalon-umma.jfif", "assets/Pantalon-umma1.jfif" , "assets/Pantalon-umma2.jfif" , "assets/Pantalon-umma3.jfif"],
+    note: "Pantalon en tela de jean con detalle de bordado en el bolsillo",
     featured: false
   },
   {
     id: "pa4",
-    name: "Pantalón Umma",
+    name: "Pantalón Milo bebe",
     category: "Pantalones",
-    priceRetail: 15200,
-    priceWholesale: 12900,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/Pantalon-umma.jfif",
-      "assets/Pantalon-umma1.jfif",
-      "assets/Pantalon-umma2.jfif",
-      "assets/Pantalon-umma3.jfif"
-    ],
-    note: "A pedido · Modelo infantil",
-    featured: true
-  },
-
-  // ===== POLLERA =====
-  {
-    id: "po1",
-    name: "Pollera",
-    category: "Pollera",
-    priceRetail: 14200,
-    priceWholesale: 11900,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/Pollera.jfif",
-      "assets/Pollera1.jfif"
-    ],
-    note: "A pedido · Consultar medidas",
+    segment: "Beba",
+    priceRetail: 9000,
+    sizes: ["Talle del 2 al 5"],
+    images: ["assets/pantalon-milo.csv", "assets/pantalon-milo2.csv"],
+    note: "Confeccionado en corderoy con bolsillos, elastico en la cintura- Varios colores",
     featured: false
   },
   {
-    id: "po2",
-    name: "Pollera Daia",
+    id: "pa5",
+    name: "Pantalón Trini",
+    category: "Pantalones",
+    segment: "Niña",
+    priceRetail: 12000,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/pantalon-trini.csv"],
+    note: "Confeccionado en Corderoy, detalle de bordado en los bolsillos y cintura elastizada- Varios colores",
+    featured: false
+  },
+  {
+    id: "pa6",
+    name: "Pantalón Abril niña",
+    category: "Pantalones",
+    segment: "Niña",
+    priceRetail: 11000,
+    sizes: ["Talle del 6 al 16"],
+    images: ["assets/pantalon-abril.jfif", "assets/pantalon-abril1.jfif" , "assets/pantalon-abri2.jfif" , "assets/pantalon-abril3.jfif"],
+    note: "PRealizado en tusor- Colores varios",
+    featured: false
+  },
+  {
+    id: "pa7",
+    name: "Pantalón Umma",
+    category: "Pantalones",
+    segment: "Niña",
+    priceRetail: 12000,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/Pantalon-umma.jfif", "assets/Pantalon-umma1.jfif" , "assets/Pantalon-umma2.jfif" , "assets/Pantalon-umma3.jfif"],
+    note: "Pantalon de jean con detalle de bordado en el bolsillo",
+    featured: false
+  },
+
+  // ======================
+  // POLLERAS
+  // ======================
+  {
+    id: "po1",
+    name: "Pollera Daya beba",
     category: "Pollera",
-    priceRetail: 14200,
-    priceWholesale: 11900,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/pollera-daia.csv",
-      "assets/pollera-daia2.csv"
-    ],
-    note: "A pedido · Modelo delicado",
+    segment: "Beba",
+    priceRetail: 8000,
+    sizes: ["Talle 2 al 5"],
+    images: ["assets/pollera1.jfif"],
+    note: "Confeccionada en jean con bordado en los bolsillos y elastico en la cintura.",
+    featured: false
+  },
+ {
+    id: "po4",
+    name: "Pollera Magali de beba",
+    category: "Pollera",
+    segment: "Beba",
+    priceRetail: 8000,
+    sizes: ["Del talle 2 al 5"],
+    images: ["assets/Pollera-magali.csv"],
+    note: "Realizado en corderoy con bolsillos bordados- Varios colores",
     featured: false
   },
   {
     id: "po3",
-    name: "Pollera Magali",
+    name: "Pollera Daia de jean niña",
     category: "Pollera",
-    priceRetail: 14200,
-    priceWholesale: 11900,
-    wholesaleMinQty: 3,
-    images: [
-      "assets/Pollera-magali.csv"
-    ],
-    note: "A pedido · Diseño artesanal",
+    segment: "Niña",
+    priceRetail: 9500,
+    sizes: ["Talles del 6 al 14"],
+    images: ["assets/Pollera-daia.csv", "assets/pollera-daia2.csv"],
+    note: "Jean semi elastizado. Con bolsillos bordados.",
+    featured: true
+  },
+  
+  {
+    id: "po4",
+    name: "Pollera Magali de nena",
+    category: "Pollera",
+    segment: "Niña",
+    priceRetail: 9500,
+    sizes: ["Del talle 6 al 14"],
+    images: ["assets/Pollera-magali.csv"],
+    note: "Realizado en corderoy con bolsillos bordados- Varios colores",
     featured: false
   },
 
-  // ===== VESTIDO =====
+  // ======================
+  // VESTIDOS
+  // ======================
   {
     id: "ve1",
-    name: "Vestido Vera",
+    name: "Vestido mini Vera",
     category: "Vestido",
-    priceRetail: 21000,
-    priceWholesale: 18200,
-    wholesaleMinQty: 2,
-    images: [
-      "assets/Vestido-vera.csv"
-    ],
-    note: "A pedido · Ideal para ocasión especial",
+    segment: "Beba",
+    priceRetail: 11000,
+    sizes: ["Del talle 2 al 5"],
+    images: ["assets/vestido-vera.csv"],
+    note: "Varios Colores",
     featured: true
   }
 ];
 
-const FAQ = [
-  { q: "¿Hay stock?", a: "No, trabajamos por pedido. Elegís modelos y se confecciona especialmente para vos." },
-  { q: "¿Cómo se paga?", a: "Se abona 50% de seña para iniciar la confección y el saldo al entregar/retirar." },
-  { q: "¿Cuánto demora?", a: "Aprox 15 días (según el pedido). Si necesitás para una fecha, avisame en notas." },
-  { q: "¿Mayorista cómo funciona?", a: "Mayorista tiene precio especial por cantidad (mínimos por producto). Te confirmo todo por WhatsApp." },
+const FAQS = [
+  {
+    q: "¿Trabajan con stock?",
+    a: "No. Todas las prendas se realizan por pedido, con atención personalizada."
+  },
+  {
+    q: "¿Cómo se confirma el pedido?",
+    a: "Una vez definido el pedido, se solicita una seña del 50% para iniciar la confección."
+  },
+  {
+    q: "¿Cuánto tarda la entrega?",
+    a: "El tiempo estimado es de aproximadamente 15 días, según el volumen del pedido."
+  },
+  {
+    q: "¿Dónde se coordinan los detalles?",
+    a: "Todo se coordina por WhatsApp: modelos, talles, entrega y aclaraciones."
+  }
 ];
 
-let pricingMode = "retail";  // retail | wholesale
-let cart = loadCart();
-let activeCategory = "all";
-let query = "";
+const state = {
+  selectedCategory: "all",
+  search: "",
+  cart: [],
+  lightboxImages: [],
+  lightboxIndex: 0
+};
 
-// COVER -> STORE
-enterBtn.addEventListener("click", () => {
-  cover.classList.add("hidden");
-  store.classList.remove("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+const CATEGORY_ORDER = [
+  "Accesorios",
+  "Ajuar",
+  "Blusas",
+  "Camisa",
+  "Chaleco",
+  "Conjunto",
+  "Jumper",
+  "Mono",
+  "Pantalones",
+  "Pollera",
+  "Vestido"
+];
 
-// bubbles cover
-function spawnBubble() {
-  const b = document.createElement("div");
-  b.className = "bubble";
-  const size = 6 + Math.random() * 12;
-  b.style.width = `${size}px`;
-  b.style.height = `${size}px`;
-  b.style.left = `${Math.random() * 100}%`;
-  b.style.opacity = `${0.25 + Math.random() * 0.35}`;
-  b.style.animationDuration = `${5 + Math.random() * 5}s`;
-  bubbles.appendChild(b);
-  setTimeout(() => b.remove(), 11000);
+const SEGMENT_ORDER = ["Beba", "Niña", "Unisex"];
+
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+
+const cover = $("#cover");
+const store = $("#store");
+const enterBtn = $("#enterBtn");
+const bubbles = $("#bubbles");
+const goCatalogBtn = $("#goCatalogBtn");
+const catalogSection = $("#catalogSection");
+const featuredRow = $("#featuredRow");
+const catalogRoot = $("#catalogRoot");
+const searchInput = $("#searchInput");
+const faqRoot = $("#faq");
+const cartBtn = $("#cartBtn");
+const openCartCta = $("#openCartCta");
+const cartDrawer = $("#cartDrawer");
+const backdrop = $("#backdrop");
+const closeCartBtn = $("#closeCartBtn");
+const cartItems = $("#cartItems");
+const cartCount = $("#cartCount");
+const cartTotal = $("#cartTotal");
+const clearCartBtn = $("#clearCartBtn");
+const checkoutForm = $("#checkoutForm");
+const footerWhatsapp = $("#footerWhatsapp");
+const yearEl = $("#year");
+
+const lightbox = $("#lightbox");
+const lightboxImg = $("#lightboxImg");
+const closeLightbox = $("#closeLightbox");
+const lightboxPrev = $("#lightboxPrev");
+const lightboxNext = $("#lightboxNext");
+
+function formatPrice(value) {
+  return new Intl.NumberFormat("es-AR").format(value);
 }
-setInterval(spawnBubble, 420);
 
-// Scroll to catalog
-goCatalogBtn.addEventListener("click", () => {
-  catalogSection.scrollIntoView({ behavior: "smooth", block: "start" });
-});
+function generateBubbles() {
+  if (!bubbles) return;
 
-// MODE
-function setMode(mode) {
-  pricingMode = mode;
-  retailBtn.classList.toggle("active", mode === "retail");
-  wholesaleBtn.classList.toggle("active", mode === "wholesale");
-  modeHint.textContent = `Modo: ${mode === "retail" ? "Minorista" : "Mayorista"}`;
+  setInterval(() => {
+    const bubble = document.createElement("span");
+    bubble.className = "bubble";
+    const size = Math.random() * 18 + 8;
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.left = `${Math.random() * 100}%`;
+    bubble.style.opacity = `${Math.random() * 0.5 + 0.2}`;
+    bubble.style.animationDuration = `${Math.random() * 6 + 6}s`;
+    bubbles.appendChild(bubble);
 
-  renderFeatured();
-  renderProducts();
-  renderCart();
+    setTimeout(() => bubble.remove(), 13000);
+  }, 450);
 }
-retailBtn.addEventListener("click", () => setMode("retail"));
-wholesaleBtn.addEventListener("click", () => setMode("wholesale"));
 
-// FILTERS
-chips.forEach(ch => {
-  ch.addEventListener("click", () => {
-    activeCategory = ch.dataset.category;
-    chips.forEach(x => x.classList.toggle("active", x === ch));
-    renderProducts();
+function getFilteredProducts() {
+  return PRODUCTS.filter((product) => {
+    const byCategory =
+      state.selectedCategory === "all" || product.category === state.selectedCategory;
+
+    const query = state.search.trim().toLowerCase();
+    const bySearch =
+      !query ||
+      product.name.toLowerCase().includes(query) ||
+      product.category.toLowerCase().includes(query) ||
+      product.segment.toLowerCase().includes(query) ||
+      product.note.toLowerCase().includes(query) ||
+      product.sizes.join(" ").toLowerCase().includes(query);
+
+    return byCategory && bySearch;
   });
-});
-
-searchInput.addEventListener("input", (e) => {
-  query = e.target.value.trim().toLowerCase();
-  renderProducts();
-});
-
-function getPrice(p) {
-  return pricingMode === "retail" ? p.priceRetail : p.priceWholesale;
 }
 
-function filteredProducts() {
-  return PRODUCTS.filter(p => {
-    const catOk = activeCategory === "all" ? true : p.category === activeCategory;
-    const qOk = query
-      ? (
-        p.name.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query) ||
-        (p.note || "").toLowerCase().includes(query)
-      )
-      : true; return catOk && qOk;
+function groupProducts(products) {
+  const grouped = {};
+
+  CATEGORY_ORDER.forEach((category) => {
+    const categoryProducts = products.filter((p) => p.category === category);
+    if (!categoryProducts.length) return;
+
+    grouped[category] = {};
+
+    SEGMENT_ORDER.forEach((segment) => {
+      const segmentProducts = categoryProducts.filter((p) => p.segment === segment);
+      if (segmentProducts.length) {
+        grouped[category][segment] = segmentProducts;
+      }
+    });
   });
+
+  return grouped;
 }
 
-function productCard(p, scope = "catalog", idx = 0) {
-  const price = getPrice(p);
-  const extra = pricingMode === "wholesale"
-    ? `Mín. ${p.wholesaleMinQty || 1} u por mayor`
-    : "Venta minorista";
+function createCarousel(product) {
+  const images = product.images || [];
+  const hasMultiple = images.length > 1;
 
-  const imgs = Array.isArray(p.images) && p.images.length ? p.images : [];
-  const carouselId = `${scope}-${p.id}-${idx}`;
+  const dotsHtml = hasMultiple
+    ? images
+        .map((_, i) => `<span class="dot ${i === 0 ? "active" : ""}" data-dot="${i}"></span>`)
+        .join("")
+    : "";
 
   return `
-    <article class="card">
-      <div class="carousel" data-carousel="${carouselId}">
-        <div class="carousel-track" data-track="${carouselId}">
-          ${imgs.map(src => `<img src="${src}" alt="${escapeHtml(p.name)}" data-zoom="${src}">`).join("")}
-        </div>
-
-        ${imgs.length > 1 ? `
-          <button class="carousel-btn prev" type="button" data-prev="${carouselId}">‹</button>
-          <button class="carousel-btn next" type="button" data-next="${carouselId}">›</button>
-
-          <div class="carousel-dots" data-dots="${carouselId}">
-            ${imgs.map((_, i) => `
-              <span class="dot ${i === 0 ? "active" : ""}" data-dot="${carouselId}" data-index="${i}"></span>
-            `).join("")}
-          </div>
-        ` : ""}
+    <div class="carousel ${!hasMultiple ? "single-image" : ""}" data-carousel-id="${product.id}">
+      <div class="carousel-track">
+        ${images
+          .map(
+            (img, i) =>
+              `<img src="${img}" alt="${product.name}" data-lightbox-product="${product.id}" data-lightbox-index="${i}">`
+          )
+          .join("")}
       </div>
 
+      ${
+        hasMultiple
+          ? `
+            <button class="carousel-btn prev" type="button" data-dir="-1">‹</button>
+            <button class="carousel-btn next" type="button" data-dir="1">›</button>
+            <div class="carousel-dots">${dotsHtml}</div>
+          `
+          : ""
+      }
+    </div>
+  `;
+}
+
+function createCard(product) {
+  return `
+    <article class="card">
+      ${createCarousel(product)}
       <div class="card-body">
         <div class="meta">
-          <span>${escapeHtml(p.category)}</span>
-          <span class="price">$${formatMoney(price)}</span>
+          <span>${product.category}</span>
+          <span>${product.segment}</span>
         </div>
 
-        <h3 class="card-title">${escapeHtml(p.name)}</h3>
-        <div class="small">${escapeHtml(p.note || "A pedido")}</div>
-        <div class="small">${escapeHtml(extra)}</div>
+        <h4 class="card-title">${product.name}</h4>
+        <div class="price">$ ${formatPrice(product.priceRetail)}</div>
+
+        <p class="small">${product.note}</p>
+
+        <div class="sizes">
+          ${product.sizes.map(size => `<span class="size-pill">${size}</span>`).join("")}
+        </div>
 
         <div class="actions">
-          <button class="btn btn-soft" data-action="add" data-id="${p.id}" type="button">Agregar</button>
-          <button class="btn btn-add" data-action="cart" data-id="${p.id}" type="button">Pedir</button>
+          <button class="btn btn-soft" type="button" data-view="${product.id}">Ver</button>
+          <button class="btn btn-add" type="button" data-add="${product.id}">Agregar</button>
         </div>
       </div>
     </article>
   `;
 }
-function renderCatalogBySections() {
-  const sections = [
-    { key: "Ajuar", desc: "Prendas y sets para bebé" },
-    { key: "Blusas", desc: "Blusas delicadas y a pedido" },
-    { key: "Body", desc: "Bodies para bebé" },
-    { key: "Camisa", desc: "Camisas infantiles" },
-    { key: "Chaleco", desc: "Chalecos tejidos y confeccionados" },
-    { key: "Conjunto", desc: "Conjuntos completos" },
-    { key: "Jumper", desc: "Jumpers para nenas" },
-    { key: "Mono", desc: "Monos cómodos y delicados" },
-    { key: "Pantalones", desc: "Pantalones infantiles" },
-    { key: "Pollera", desc: "Polleras confeccionadas a pedido" },
-    { key: "Vestido", desc: "Vestidos para ocasiones especiales" }
-  ];
-
-  const list = filteredProducts();
-
-  catalogRoot.innerHTML = sections.map(section => {
-    const items = list.filter(p => p.category === section.key);
-    if (items.length === 0) return "";
-
-    return `
-      <section class="cat-section" id="sec-${section.key}">
-        <div class="cat-section-head">
-          <div>
-            <h4>${section.key}</h4>
-            <p>${section.desc}</p>
-          </div>
-        </div>
-
-        <div class="cat-grid">
-          ${items.map((p, idx) => productCard(p, `catalog-${section.key}`, idx)).join("")}
-        </div>
-      </section>
-    `;
-  }).join("");
-
-  initCarousels();
-}
-function renderProducts() {
-  renderCatalogBySections();
-}
 
 function renderFeatured() {
-  const featured = PRODUCTS.filter(p => p.featured);
-  featuredRow.innerHTML = featured.map((p, idx) => productCard(p, "featured", idx)).join("");
-  initCarousels();
+  const featuredProducts = getFilteredProducts().filter((p) => p.featured);
+  featuredRow.innerHTML = featuredProducts.length
+    ? featuredProducts.map(createCard).join("")
+    : `<p class="small">No hay productos destacados para esta búsqueda.</p>`;
+
+  setupAllCarousels(featuredRow);
 }
 
-/* ======================
-   CLICK HANDLERS (global)
-====================== */
+function renderCatalog() {
+  const filtered = getFilteredProducts();
 
-
-// LIGHTBOX
-let lightboxImages = [];
-let lightboxIndex = 0;
-
-function openLightbox(images, index = 0) {
-  if (!images || !images.length) return;
-  lightboxImages = images;
-  lightboxIndex = index;
-  updateLightbox();
-  lightbox.classList.remove("hidden");
-}
-
-function updateLightbox() {
-  if (!lightboxImages.length) return;
-  lightboxImg.src = lightboxImages[lightboxIndex];
-
-  const showNav = lightboxImages.length > 1;
-  lightboxPrev.style.display = showNav ? "grid" : "none";
-  lightboxNext.style.display = showNav ? "grid" : "none";
-}
-
-function prevLightbox() {
-  if (!lightboxImages.length) return;
-  lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
-  updateLightbox();
-}
-
-function nextLightbox() {
-  if (!lightboxImages.length) return;
-  lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
-  updateLightbox();
-}
-
-function closeLb() {
-  lightbox.classList.add("hidden");
-  lightboxImg.src = "";
-  lightboxImages = [];
-  lightboxIndex = 0;
-}
-
-closeLightbox.addEventListener("click", closeLb);
-lightboxPrev.addEventListener("click", (e) => {
-  e.stopPropagation();
-  prevLightbox();
-});
-lightboxNext.addEventListener("click", (e) => {
-  e.stopPropagation();
-  nextLightbox();
-});
-
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) closeLb();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (lightbox.classList.contains("hidden")) return;
-
-  if (e.key === "Escape") closeLb();
-  if (e.key === "ArrowLeft") prevLightbox();
-  if (e.key === "ArrowRight") nextLightbox();
-});
-
-/* ======================
-   CAROUSEL
-====================== */
-const carouselState = {};
-
-function setCarousel(carouselId, index) {
-  const track = document.querySelector(`[data-track="${carouselId}"]`);
-  const dotsWrap = document.querySelector(`[data-dots="${carouselId}"]`);
-  if (!track) return;
-
-  const slides = track.querySelectorAll("img");
-  const total = slides.length;
-  if (!total) return;
-
-  let nextIndex = index;
-
-  if (index < 0) nextIndex = total - 1;
-  if (index >= total) nextIndex = 0;
-
-  carouselState[carouselId] = nextIndex;
-  track.style.transform = `translateX(-${nextIndex * 100}%)`;
-
-  if (dotsWrap) {
-    dotsWrap.querySelectorAll(".dot").forEach((dot, i) => {
-      dot.classList.toggle("active", i === nextIndex);
-    });
-  }
-}
-
-document.addEventListener("click", (e) => {
-  const zoom = e.target.closest("img[data-zoom]");
-  if (zoom) {
-    const track = zoom.closest(".carousel-track");
-    if (track) {
-      const imgs = Array.from(track.querySelectorAll("img[data-zoom]"));
-      const sources = imgs.map(img => img.dataset.zoom);
-      const index = imgs.findIndex(img => img === zoom);
-      openLightbox(sources, index >= 0 ? index : 0);
-      return;
-    }
-  }
-
-  const btn = e.target.closest("button[data-action]");
-  if (!btn) return;
-
-  const id = btn.dataset.id;
-  if (btn.dataset.action === "add") addToCart(id, 1);
-  if (btn.dataset.action === "cart") { addToCart(id, 1); openCart(); }
-});
-
-function initCarousels() {
-  document.querySelectorAll("[data-carousel]").forEach(el => {
-    const id = el.dataset.carousel;
-    carouselState[id] = carouselState[id] ?? 0;
-    setCarousel(id, carouselState[id]);
-  });
-}
-
-/* ======================
-   CART
-====================== */
-function addToCart(id, qty) {
-  const it = cart.find(x => x.id === id);
-  if (it) it.qty += qty;
-  else cart.push({ id, qty });
-  saveCart();
-  renderCart();
-}
-
-function changeQty(id, delta) {
-  const it = cart.find(x => x.id === id);
-  if (!it) return;
-  it.qty = Math.max(1, it.qty + delta);
-  saveCart();
-  renderCart();
-}
-
-function removeItem(id) {
-  cart = cart.filter(x => x.id !== id);
-  saveCart();
-  renderCart();
-}
-
-function clearCart() {
-  cart = [];
-  saveCart();
-  renderCart();
-}
-
-function totals() {
-  let total = 0, count = 0;
-  cart.forEach(i => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    if (!p) return;
-    total += getPrice(p) * i.qty;
-    count += i.qty;
-  });
-  return { total, count };
-}
-
-function renderCart() {
-  const { total, count } = totals();
-  cartCount.textContent = String(count);
-  cartTotal.textContent = formatMoney(total);
-
-  if (cart.length === 0) {
-    cartItems.innerHTML = `<p class="muted">Tu pedido está vacío 🧸</p>`;
+  if (!filtered.length) {
+    catalogRoot.innerHTML = `<p class="small">No encontramos productos con esa búsqueda.</p>`;
     return;
   }
 
-  cartItems.innerHTML = cart.map(i => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    const price = getPrice(p);
-    return `
-      <div class="cart-row">
-        <img src="${p.images?.[0] || ""}" alt="${escapeHtml(p.name)}">
-        <div>
-          <h5>${escapeHtml(p.name)}</h5>
-          <small>$${formatMoney(price)} c/u · ${pricingMode === "wholesale" ? `mín. ${p.wholesaleMinQty}u` : "minorista"}</small>
-          <div class="qty">
-            <button type="button" data-action="dec" data-id="${p.id}">−</button>
-            <strong>${i.qty}</strong>
-            <button type="button" data-action="inc" data-id="${p.id}">+</button>
-          </div>
-          <button class="remove" type="button" data-action="rm" data-id="${p.id}">Quitar</button>
-        </div>
-      </div>
-    `;
-  }).join("");
+  catalogRoot.innerHTML = `
+    <div class="catalog-grid-simple">
+      ${filtered.map(createCard).join("")}
+    </div>
+  `;
+
+  setupAllCarousels(catalogRoot);
 }
 
-cartItems.addEventListener("click", (e) => {
-  const btn = e.target.closest("button[data-action]");
-  if (!btn) return;
-  const id = btn.dataset.id;
-  const action = btn.dataset.action;
-  if (action === "inc") changeQty(id, +1);
-  if (action === "dec") changeQty(id, -1);
-  if (action === "rm") removeItem(id);
-});
+function renderFaq() {
+  faqRoot.innerHTML = FAQS.map(item => `
+    <div class="faq-item">
+      <div class="faq-q">
+        <strong>${item.q}</strong>
+        <span>+</span>
+      </div>
+      <div class="faq-a">${item.a}</div>
+    </div>
+  `).join("");
 
-clearCartBtn.addEventListener("click", clearCart);
+  $$(".faq-item").forEach(item => {
+    item.addEventListener("click", () => {
+      item.classList.toggle("open");
+    });
+  });
+}
 
 function openCart() {
   cartDrawer.classList.remove("hidden");
   backdrop.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
 }
+
 function closeCart() {
   cartDrawer.classList.add("hidden");
   backdrop.classList.add("hidden");
+  document.body.style.overflow = "";
 }
-cartBtn.addEventListener("click", openCart);
-openCartCta.addEventListener("click", openCart);
-closeCartBtn.addEventListener("click", closeCart);
-backdrop.addEventListener("click", closeCart);
 
-// Checkout -> WhatsApp
-checkoutForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (cart.length === 0) {
-    alert("Tu pedido está vacío.");
+function addToCart(productId) {
+  const product = PRODUCTS.find(p => p.id === productId);
+  if (!product) return;
+
+  const found = state.cart.find(item => item.id === productId);
+
+  if (found) {
+    found.qty += 1;
+  } else {
+    state.cart.push({
+      id: product.id,
+      name: product.name,
+      priceRetail: product.priceRetail,
+      image: product.images[0],
+      qty: 1
+    });
+  }
+
+  renderCart();
+  openCart();
+}
+
+function updateQty(productId, delta) {
+  const item = state.cart.find(p => p.id === productId);
+  if (!item) return;
+
+  item.qty += delta;
+
+  if (item.qty <= 0) {
+    state.cart = state.cart.filter(p => p.id !== productId);
+  }
+
+  renderCart();
+}
+
+function removeFromCart(productId) {
+  state.cart = state.cart.filter(item => item.id !== productId);
+  renderCart();
+}
+
+function renderCart() {
+  cartCount.textContent = state.cart.reduce((acc, item) => acc + item.qty, 0);
+
+  if (!state.cart.length) {
+    cartItems.innerHTML = `<p class="small">Todavía no agregaste productos.</p>`;
+    cartTotal.textContent = "0";
     return;
   }
 
-  const name = cName.value.trim();
-  const phone = cPhone.value.trim();
-  const zone = cZone.value.trim();
-  const notes = cNotes.value.trim();
+  cartItems.innerHTML = state.cart.map(item => `
+    <div class="cart-row">
+      <img src="${item.image}" alt="${item.name}">
+      <div>
+        <h5>${item.name}</h5>
+        <small>$ ${formatPrice(item.priceRetail)} c/u</small>
 
-  const { total } = totals();
-  const lines = cart.map(i => {
-    const p = PRODUCTS.find(x => x.id === i.id);
-    const unit = getPrice(p);
-    const line = unit * i.qty;
-    return `• ${p.name} x${i.qty} — $${formatMoney(line)}`;
-  }).join("\n");
+        <div class="qty">
+          <button type="button" data-cart-minus="${item.id}">−</button>
+          <span>${item.qty}</span>
+          <button type="button" data-cart-plus="${item.id}">+</button>
+        </div>
 
-  const modeTxt = pricingMode === "retail" ? "Minorista" : "Mayorista";
-
-  const msg =
-    `Hola Celestina! 👋
-Quiero solicitar este pedido (${modeTxt}):
-
-${lines}
-
-Total estimado: $${formatMoney(total)}
-
-Aclaración: entiendo que es *por pedido* (sin stock),
-se abona *50% de seña* para iniciar y el *saldo al entregar*.
-Entrega aprox: *15 días* (según el pedido).
-
-Datos:
-- Nombre: ${name}
-- WhatsApp: ${phone}
-- Zona: ${zone || "—"}
-- Notas: ${notes || "—"}
-
-Gracias 💗`;
-
-  window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
-});
-
-// FAQ
-function renderFaq() {
-  faq.innerHTML = FAQ.map(item => `
-    <div class="faq-item">
-      <div class="faq-q">
-        <strong>${escapeHtml(item.q)}</strong>
-        <span>＋</span>
+        <button type="button" class="remove" data-cart-remove="${item.id}">Eliminar</button>
       </div>
-      <div class="faq-a">${escapeHtml(item.a)}</div>
     </div>
   `).join("");
 
-  faq.addEventListener("click", (e) => {
-    const wrap = e.target.closest(".faq-item");
-    if (!wrap) return;
-    wrap.classList.toggle("open");
+  const total = state.cart.reduce((acc, item) => acc + item.priceRetail * item.qty, 0);
+  cartTotal.textContent = formatPrice(total);
+}
+
+function buildWhatsAppMessage(formData) {
+  const lines = [];
+
+  lines.push("¡Hola! Quiero hacer un pedido minorista en Celestina bebés y niños.");
+  lines.push("");
+  lines.push("*Datos del cliente*");
+  lines.push(`Nombre: ${formData.name}`);
+  lines.push(`WhatsApp: ${formData.phone}`);
+  lines.push(`Zona: ${formData.zone || "-"}`);
+  lines.push("");
+  lines.push("*Productos*");
+
+  state.cart.forEach((item) => {
+    lines.push(`- ${item.name} x${item.qty} — $ ${formatPrice(item.priceRetail * item.qty)}`);
+  });
+
+  const total = state.cart.reduce((acc, item) => acc + item.priceRetail * item.qty, 0);
+
+  lines.push("");
+  lines.push(`*Total estimado:* $ ${formatPrice(total)}`);
+  lines.push("");
+  lines.push("*Notas del pedido*");
+  lines.push(formData.notes || "-");
+  lines.push("");
+  lines.push("Entiendo que el pedido es a confección, con seña del 50% y entrega aproximada de 15 días.");
+
+  return lines.join("\n");
+}
+
+function submitCheckout(e) {
+  e.preventDefault();
+
+  if (!state.cart.length) {
+    alert("Primero agregá al menos un producto al carrito.");
+    return;
+  }
+
+  const formData = {
+    name: $("#cName").value.trim(),
+    phone: $("#cPhone").value.trim(),
+    zone: $("#cZone").value.trim(),
+    notes: $("#cNotes").value.trim()
+  };
+
+  const text = buildWhatsAppMessage(formData);
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+}
+
+function setupAllCarousels(scope = document) {
+  const carousels = scope.querySelectorAll(".carousel");
+
+  carousels.forEach((carousel) => {
+    const track = carousel.querySelector(".carousel-track");
+    const slides = carousel.querySelectorAll("img");
+    const prevBtn = carousel.querySelector(".prev");
+    const nextBtn = carousel.querySelector(".next");
+    const dots = carousel.querySelectorAll(".dot");
+
+    if (!track || slides.length <= 1) return;
+
+    let index = 0;
+
+    const update = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        update();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        update();
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        index = i;
+        update();
+      });
+    });
   });
 }
+function openLightbox(images, index) {
+  state.lightboxImages = images;
+  state.lightboxIndex = index;
 
-// Footer WhatsApp
-footerWhatsapp.addEventListener("click", (e) => {
-  e.preventDefault();
-  const msg = "Hola Celestina! 👋 Quiero hacer una consulta.";
-  window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
+  updateLightbox();
+
+  if (images.length <= 1) {
+    lightboxPrev.classList.add("hidden");
+    lightboxNext.classList.add("hidden");
+  } else {
+    lightboxPrev.classList.remove("hidden");
+    lightboxNext.classList.remove("hidden");
+  }
+
+  lightbox.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+function updateLightbox() {
+  lightboxImg.src = state.lightboxImages[state.lightboxIndex];
+}
+
+function closeLb() {
+  lightbox.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+function nextLightbox() {
+  if (state.lightboxImages.length <= 1) return;
+  state.lightboxIndex = (state.lightboxIndex + 1) % state.lightboxImages.length;
+  updateLightbox();
+}
+
+
+
+function setupGlobalEvents() {
+  if (enterBtn) {
+    enterBtn.addEventListener("click", () => {
+      cover.classList.add("hidden");
+      store.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  if (goCatalogBtn) {
+    goCatalogBtn.addEventListener("click", () => {
+      catalogSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      state.search = e.target.value;
+      renderFeatured();
+      renderCatalog();
+    });
+  }
+
+  const filters = $("#filters");
+  if (filters) {
+    filters.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+
+      $$(".chip").forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      state.selectedCategory = chip.dataset.category;
+
+      renderFeatured();
+      renderCatalog();
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    const addBtn = e.target.closest("[data-add]");
+    const viewBtn = e.target.closest("[data-view]");
+    const lightboxImgTrigger = e.target.closest("[data-lightbox-product]");
+
+    const minusBtn = e.target.closest("[data-cart-minus]");
+    const plusBtn = e.target.closest("[data-cart-plus]");
+    const removeBtn = e.target.closest("[data-cart-remove]");
+
+    if (addBtn) {
+      addToCart(addBtn.dataset.add);
+    }
+
+    if (viewBtn) {
+      const product = PRODUCTS.find(p => p.id === viewBtn.dataset.view);
+      if (product) openLightbox(product.images, 0);
+    }
+
+    if (lightboxImgTrigger) {
+      const product = PRODUCTS.find(p => p.id === lightboxImgTrigger.dataset.lightboxProduct);
+      const index = Number(lightboxImgTrigger.dataset.lightboxIndex || 0);
+      if (product) openLightbox(product.images, index);
+    }
+
+    if (minusBtn) updateQty(minusBtn.dataset.cartMinus, -1);
+    if (plusBtn) updateQty(plusBtn.dataset.cartPlus, 1);
+    if (removeBtn) removeFromCart(removeBtn.dataset.cartRemove);
+  });
+
+  if (cartBtn) cartBtn.addEventListener("click", openCart);
+  if (openCartCta) openCartCta.addEventListener("click", openCart);
+  if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart);
+  if (backdrop) backdrop.addEventListener("click", closeCart);
+
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener("click", () => {
+      state.cart = [];
+      renderCart();
+    });
+  }
+
+  if (checkoutForm) {
+    checkoutForm.addEventListener("submit", submitCheckout);
+  }
+
+  if (footerWhatsapp) {
+    footerWhatsapp.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}`, "_blank");
+    });
+  }
+
+  if (closeLightbox) closeLightbox.addEventListener("click", closeLb);
+  if (lightboxNext) lightboxNext.addEventListener("click", nextLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener("click", prevLightboxFn);
+
+  if (lightbox) {
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLb();
+    });
+  }
+
+ document.addEventListener("keydown", (e) => {
+  if (!lightbox.classList.contains("hidden")) {
+    if (e.key === "Escape") closeLb();
+
+    if (state.lightboxImages.length > 1) {
+      if (e.key === "ArrowRight") nextLightbox();
+      if (e.key === "ArrowLeft") prevLightboxFn();
+    }
+  }
 });
-
-// STORAGE
-function saveCart() { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
-function loadCart() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch { return []; }
 }
 
-// UTILS
-function formatMoney(n) { return new Intl.NumberFormat("es-AR").format(Number(n || 0)); }
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+function init() {
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  generateBubbles();
+  renderFeatured();
+  renderCatalog();
+  renderFaq();
+  renderCart();
+  setupGlobalEvents();
 }
 
-// INIT
-renderFeatured();
-renderProducts();
-renderFaq();
-renderCart();
-setMode("retail");
+init();

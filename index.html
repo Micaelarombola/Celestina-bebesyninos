@@ -51,11 +51,7 @@
         </div>
       </div>
 
-      <div class="top-actions">
-        <div class="mode-toggle" aria-label="Modo de compra">
-          <button id="retailBtn" class="mode-btn active" type="button">Minorista</button>
-          <button id="wholesaleBtn" class="mode-btn" type="button">Mayorista</button>
-        </div>
+    
 
         <button id="cartBtn" class="icon-btn" type="button">
           🛒 <span id="cartCount" class="badge">0</span>
@@ -80,10 +76,10 @@
 
         <div class="hero-text">
           <span class="badge-soft">HECHO A PEDIDO</span>
-          <h2>Hola, soy Celestina 💗</h2>
+          <h2>Hola, soy Celestina ✨</h2>
           <p>
             Diseño y confecciono prendas para bebés y niños con dedicación y atención personalizada.
-            Todo se realiza por pedido (sin stock).
+            Todo se realiza por pedido, con detalles cuidados y una experiencia de compra simple.
           </p>
 
           <div class="hero-info-grid">
@@ -103,20 +99,19 @@
 
           <div class="hero-cta">
             <button id="goCatalogBtn" class="btn-primary btn-sm" type="button">Ver catálogo</button>
-            <a class="btn-outline btn-sm" href="https://www.instagram.com/celestina.bebesyninos/" target="_blank"
-              rel="noreferrer">
+            <a class="btn-outline btn-sm" href="https://www.instagram.com/celestina.bebesyninos/" target="_blank" rel="noreferrer">
               Ver Instagram
             </a>
           </div>
 
           <div class="hero-mini">
             <div class="mini-card">
-              <h4>Minorista</h4>
-              <p>Compras individuales.</p>
+              <h4>Mayorista</h4>
+              <p>Compras por curvas con atención personalizada.</p>
             </div>
             <div class="mini-card">
-              <h4>Mayorista</h4>
-              <p>Precios por cantidad (mínimos).</p>
+              <h4>Talles disponibles</h4>
+              <p>Podés ver los talles en cada producto.</p>
             </div>
           </div>
         </div>
@@ -148,7 +143,7 @@
         <div class="step-card">
           <div class="step-num">3</div>
           <h4>Entrega aprox 15 días</h4>
-          <p>Coordinamos entrega. El saldo se paga al recibir/retirar.</p>
+          <p>Coordinamos entrega. El saldo se paga al recibir o retirar.</p>
         </div>
       </div>
     </section>
@@ -159,20 +154,20 @@
         <div class="search">
           <input id="searchInput" type="search" placeholder="Buscar (body, camisa, pollera, vestido...)" />
         </div>
-        <div class="filters">
-          <button class="chip active" data-category="all" type="button">Todo</button>
-          <button class="chip" data-category="Ajuar" type="button">Ajuar</button>
-          <button class="chip" data-category="Blusas" type="button">Blusas</button>
-          <button class="chip" data-category="Body" type="button">Body</button>
-          <button class="chip" data-category="Camisa" type="button">Camisa</button>
-          <button class="chip" data-category="Chaleco" type="button">Chaleco</button>
-          <button class="chip" data-category="Conjunto" type="button">Conjunto</button>
-          <button class="chip" data-category="Jumper" type="button">Jumper</button>
-          <button class="chip" data-category="Mono" type="button">Mono</button>
-          <button class="chip" data-category="Pantalones" type="button">Pantalones</button>
-          <button class="chip" data-category="Pollera" type="button">Pollera</button>
-          <button class="chip" data-category="Vestido" type="button">Vestido</button>
-        </div>
+   <div class="filters" id="filters">
+  <button class="chip active" data-category="all" type="button">Todo</button>
+  <button class="chip" data-category="Accesorios" type="button">Accesorios</button>
+  <button class="chip" data-category="Ajuar" type="button">Ajuar</button>
+  <button class="chip" data-category="Blusas" type="button">Blusas</button>
+  <button class="chip" data-category="Camisa" type="button">Camisa</button>
+  <button class="chip" data-category="Chaleco" type="button">Chaleco</button>
+  <button class="chip" data-category="Conjunto" type="button">Conjunto</button>
+  <button class="chip" data-category="Jumper" type="button">Jumper</button>
+  <button class="chip" data-category="Mono" type="button">Mono</button>
+  <button class="chip" data-category="Pantalones" type="button">Pantalones</button>
+  <button class="chip" data-category="Pollera" type="button">Pollera</button>
+  <button class="chip" data-category="Vestido" type="button">Vestido</button>
+</div>
       </div>
     </section>
 
@@ -185,21 +180,16 @@
       <div class="h-scroll" id="featuredRow"></div>
     </section>
 
-    <!-- CATÁLOGO POR SECCIONES -->
-    <section class="section" id="catalogSection">
-      <div class="section-head">
-        <h3>Catálogo</h3>
-        <p>Armá tu pedido y coordinamos por WhatsApp</p>
-      </div>
-
-      <div id="catalogRoot" class="catalog-root"></div>
-    </section>
+    <!-- CATÁLOGO -->
+  <section class="section" id="catalogSection">
+  <div id="catalogRoot" class="catalog-root"></div>
+</section>
 
     <!-- BENEFICIOS -->
     <section class="section">
       <div class="section-head">
         <h3>¿Por qué Celestina?</h3>
-        <p>Una experiencia de compra cuidada 💗</p>
+        <p>Una experiencia de compra cuidada 🤍</p>
       </div>
 
       <div class="benefits">
@@ -209,11 +199,11 @@
         </div>
         <div class="benefit-card">
           <h4>🧵 Hecho a pedido</h4>
-          <p>Se confecciona especialmente para vos (sin stock).</p>
+          <p>Se confecciona especialmente para vos, con atención personalizada.</p>
         </div>
         <div class="benefit-card">
-          <h4>🧾 Pedido detallado</h4>
-          <p>Te queda todo claro en el mensaje de WhatsApp.</p>
+          <h4>🧾 Pedido claro</h4>
+          <p>Te queda todo resumido en el mensaje de WhatsApp.</p>
         </div>
       </div>
     </section>
@@ -222,7 +212,7 @@
     <section class="section">
       <div class="section-head">
         <h3>Preguntas frecuentes</h3>
-        <p>Para ahorrar ida y vuelta 😅</p>
+        <p>Para resolver dudas rápido</p>
       </div>
       <div class="faq" id="faq"></div>
     </section>
@@ -231,7 +221,7 @@
     <section class="section">
       <div class="cta">
         <div>
-          <h3>¿Lista para armar tu pedido? 💗</h3>
+          <h3>¿Lista para armar tu pedido? ✨</h3>
           <p>Abrí el carrito, completá tus datos y te armamos el mensaje por WhatsApp.</p>
         </div>
         <button id="openCartCta" class="btn-primary" type="button">Abrir carrito</button>
@@ -239,57 +229,49 @@
     </section>
 
     <!-- FOOTER -->
-
     <footer class="footer-premium">
+      <div class="footer-inner">
 
-  <div class="footer-inner">
+        <div class="footer-logo-wrap">
+          <img src="assets/logo.jfif" alt="Celestina bebés y niños" class="footer-logo">
+        </div>
 
-    <!-- LOGO -->
-    <div class="footer-logo-wrap">
-      <img src="assets/logo.jfif" alt="Celestina bebés y niños" class="footer-logo">
-    </div>
+        <div class="footer-col footer-brand">
+          <h4>Celestina bebés y niños</h4>
+          <p>
+            Prendas confeccionadas a pedido para bebés y niños,
+            con atención personalizada y una experiencia de compra
+            simple y cuidada.
+          </p>
+          <small>© <span id="year"></span> Celestina · Todos los derechos reservados.</small>
+        </div>
 
-    <!-- MARCA -->
-    <div class="footer-col footer-brand">
-      <h4>Celestina bebés y niños</h4>
-      <p>
-        Prendas confeccionadas a pedido para bebés y niños,
-        con atención personalizada y una experiencia de compra
-        simple y cuidada.
-      </p>
-      <small>© <span id="year"></span> Celestina · Todos los derechos reservados.</small>
-    </div>
+        <div class="footer-col">
+          <strong>Contacto</strong>
+          <a href="https://www.instagram.com/celestina.bebesyninos/" target="_blank">Instagram</a>
+          <a href="#" id="footerWhatsapp">WhatsApp</a>
+        </div>
 
-    <!-- CONTACTO -->
-    <div class="footer-col">
-      <strong>Contacto</strong>
-      <a href="https://www.instagram.com/celestina.bebesyninos/" target="_blank">Instagram</a>
-      <a href="#" id="footerWhatsapp">WhatsApp</a>
-    </div>
+        <div class="footer-col">
+          <strong>Compra</strong>
+          <span>Producción a pedido</span>
+          <span>Seña 50% para iniciar</span>
+          <span>Entrega aprox 15 días</span>
+        </div>
 
-    <!-- COMPRA -->
-    <div class="footer-col">
-      <strong>Compra</strong>
-      <span>Producción a pedido</span>
-      <span>Seña 50% para iniciar</span>
-      <span>Entrega aprox 15 días</span>
-    </div>
+        <div class="footer-col">
+          <strong>Modalidad</strong>
+          <span>Venta mayorista</span>
+          <span>Sin stock</span>
+          <span>Coordinación por WhatsApp</span>
+        </div>
 
-    <!-- MODALIDAD -->
-    <div class="footer-col">
-      <strong>Modalidad</strong>
-      <span>Minorista y mayorista</span>
-      <span>Sin stock</span>
-      <span>Coordinación por WhatsApp</span>
-    </div>
+      </div>
 
-  </div>
-
-  <div class="footer-bottom">
-    Hecho con amor para una experiencia de compra simple y cuidada 💗
-  </div>
-
-</footer>
+      <div class="footer-bottom">
+        Hecho con amor para una experiencia de compra simple y cuidada 🤍
+      </div>
+    </footer>
 
   </main>
 
@@ -301,7 +283,6 @@
     <div class="drawer-header">
       <div>
         <h3>Tu Pedido</h3>
-        <small id="modeHint" class="muted">Modo: Minorista</small>
       </div>
       <button id="closeCartBtn" class="icon-btn" type="button">✕</button>
     </div>
@@ -337,7 +318,7 @@
         </div>
 
         <button class="btn-whatsapp" type="submit">Solicitar pedido por WhatsApp</button>
-        <p class="mini">Mensaje incluye: por pedido + seña 50% + entrega aprox 15 días.</p>
+        <p class="mini">Mensaje incluye: pedido mayorista + seña 50% + entrega aprox 15 días.</p>
       </form>
     </div>
   </aside>
@@ -352,6 +333,7 @@
       <button id="lightboxNext" class="lightbox-nav lightbox-next" type="button">›</button>
     </div>
   </div>
+
   <script src="app.js"></script>
 </body>
 
