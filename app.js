@@ -36,7 +36,7 @@ const PRODUCTS = [
     category: "Ajuar",
     segment: "Beba",
     priceRetail: 9000,
-    sizes: ["RN", "0-3M", "3-6M"],
+    sizes: ["Talle unico"],
     images: ["assets/kit1.csv", "assets/kit2.csv", "assets/kit3.csv" , "assets/kit4.csv"  ],
     note: "Ajuar confeccionado a pedido",
     featured: true
@@ -47,7 +47,7 @@ const PRODUCTS = [
     category: "Ajuar",
     segment: "Beba",
     priceRetail: 13000,
-    sizes: ["RN", "0-3M", "3-6M"],
+    sizes: ["Talle unico"],
     images: ["assets/ajuar1.png", "assets/ajuar2.png" , "assets/ajuar3.png" , "assets/ajuar4.png"],
     note: "Ajuar con camperita incluida",
     featured: true
@@ -245,7 +245,7 @@ const PRODUCTS = [
     priceRetail: 8000,
     sizes: ["Talle del 2 al 5"],
     images: ["assets/jumper-grace.csv"],
-    note: "JRealizado en tusor con puntilla de algodon- Varios colores",
+    note: "Realizado en tusor con puntilla de algodon- Varios colores",
     featured: true
   },
   {
