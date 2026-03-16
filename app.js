@@ -101,6 +101,18 @@ const PRODUCTS = [
     note: "Realizado en tusor. Varios colores",
     featured: false
   },
+
+   {
+    id: "bl6",
+    name: "Blusa Melina ",
+    category: "Blusas",
+    segment: "Niña",
+    priceRetail: 11500,
+    sizes: ["Talle del 6 al 14"],
+    images: ["assets/blusa-carmela.csv", "assets/Blusa-carmela.jfif", "assets/blusa-carmela2.csv"],
+    note: "Realizado en tusor. Varios colores",
+    featured: false
+  },
   // ======================
   // CAMISAS
   // ======================
